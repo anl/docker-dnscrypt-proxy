@@ -52,4 +52,4 @@ RUN mkdir /etc/confd
 COPY templates /etc/confd/templates
 COPY confd /etc/confd/conf.d
 
-ENV DNSCRYPTPROXY_LISTENADDRESSES="['127.0.0.1:53']"
+ENV DNSCRYPTPROXY_LISTENADDRESSES="['0.0.0.0:53']"
