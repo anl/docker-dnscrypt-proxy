@@ -37,4 +37,12 @@ RUN curl -Lso /tmp/dnscrypt.tar.gz \
     minisign -Vm dnscrypt.tar.gz -P $dnscrypt_pubkey && \
     tar -xzf dnscrypt.tar.gz
 
+ARG confd_version=0.16.0
+ARG confd_checksum=3d0a3ca940e5305af1a8294fdf5e370ebc0ac87c
+
+RUN curl -Lso /usr/local/bin/confd \
+         https://github.com/kelseyhightower/confd/releases/download/v${confd_version}/confd-${confd_version}-linux-amd64 && \
+    echo "$confd_checksum  /usr/local/bin/confd" | sha1sum -c && \
+    chmod 555 /usr/local/bin/confd
+
 # FROM ubuntu:1804
