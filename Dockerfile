@@ -50,3 +50,4 @@ RUN curl -Lso /usr/local/bin/confd \
 
 RUN mkdir -p /etc/confd/{conf.d,templates}
 COPY templates /etc/confd/templates
+COPY confd /etc/confd/conf.d
