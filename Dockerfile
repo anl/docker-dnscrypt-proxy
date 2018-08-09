@@ -46,3 +46,6 @@ RUN curl -Lso /usr/local/bin/confd \
     chmod 555 /usr/local/bin/confd
 
 # FROM ubuntu:1804
+
+RUN mkdir -p /etc/confd/{conf.d,templates}
+COPY templates /etc/confd/templates
