@@ -51,3 +51,5 @@ RUN curl -Lso /usr/local/bin/confd \
 RUN mkdir /etc/confd
 COPY templates /etc/confd/templates
 COPY confd /etc/confd/conf.d
+
+ENV DNSCRYPTPROXY_LISTENADDRESSES="['127.0.0.1:53']"

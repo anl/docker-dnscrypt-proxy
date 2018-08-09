@@ -1,4 +1,6 @@
 [template]
 src = "dnscrypt-proxy.toml.tmpl"
 dest = "/etc/dnscrypt-proxy.toml"
-keys = []
+keys = [
+    "/dnscryptproxy/listenaddresses"
+]
