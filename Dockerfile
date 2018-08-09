@@ -48,6 +48,6 @@ RUN curl -Lso /usr/local/bin/confd \
 
 # FROM ubuntu:1804
 
-RUN mkdir -p /etc/confd/{conf.d,templates}
+RUN mkdir /etc/confd
 COPY templates /etc/confd/templates
 COPY confd /etc/confd/conf.d
