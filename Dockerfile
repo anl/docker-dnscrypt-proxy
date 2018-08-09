@@ -11,10 +11,12 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists
 
 ARG minisign_version=0.8
+ARG minisign_checksum=c8bf3765193a72193219141a726fb617e40c957b
 
 RUN curl -Lso /tmp/minisign.tar.gz \
          https://github.com/jedisct1/minisign/archive/${minisign_version}.tar.gz && \
     cd /tmp && \
+    echo "$minisign_checksum  /tmp/minisign.tar.gz" | sha1sum -c && \
     tar -xzf minisign.tar.gz && \
     cd minisign-${minisign_version} && \
     mkdir build && \
