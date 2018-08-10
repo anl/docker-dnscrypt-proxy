@@ -59,5 +59,8 @@ RUN curl -Lso /tmp/containerpilot.tar.gz \
 RUN mkdir /etc/confd
 COPY templates /etc/confd/templates
 COPY confd /etc/confd/conf.d
+COPY containerpilot.json5 /etc/containerpilot.json5
 
 ENV DNSCRYPTPROXY_LISTENADDRESSES="['0.0.0.0:53']"
+
+CMD ["/usr/local/bin/containerpilot", "-config", "/etc/containerpilot.json5" ]
