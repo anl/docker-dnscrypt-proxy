@@ -46,6 +46,14 @@ RUN curl -Lso /usr/local/bin/confd \
     echo "$confd_checksum  /usr/local/bin/confd" | sha1sum -c && \
     chmod 555 /usr/local/bin/confd
 
+ARG CONTAINERPILOT_VERSION=3.8.0
+ARG CONTAINERPILOT_CHECKSUM=84642c13683ddae6ccb63386e6160e8cb2439c26
+
+RUN curl -Lso /tmp/containerpilot.tar.gz \
+      https://github.com/joyent/containerpilot/releases/download/${CONTAINERPILOT_VERSION}/containerpilot-${CONTAINERPILOT_VERSION}.tar.gz && \
+    echo "${CONTAINERPILOT_CHECKSUM}  /tmp/containerpilot.tar.gz" | sha1sum -c && \
+    tar -xzf /tmp/containerpilot.tar.gz -C /usr/local/bin
+
 # FROM ubuntu:1804
 
 RUN mkdir /etc/confd
