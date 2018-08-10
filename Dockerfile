@@ -29,13 +29,13 @@ RUN curl -Lso /tmp/minisign.tar.gz \
 ARG dnscrypt_version=2.0.16
 ARG dnscrypt_pubkey=RWTk1xXqcTODeYttYMCMLo0YJHaFEHn7a3akqHlb/7QvIQXHVPxKbjB5
 
-RUN curl -Lso /tmp/dnscrypt.tar.gz \
+RUN curl -Lso /tmp/dnscrypt-proxy.tar.gz \
          https://github.com/jedisct1/dnscrypt-proxy/releases/download/${dnscrypt_version}/dnscrypt-proxy-linux_x86_64-${dnscrypt_version}.tar.gz && \
-    curl -Lso /tmp/dnscrypt.tar.gz.minisig \
+    curl -Lso /tmp/dnscrypt-proxy.tar.gz.minisig \
          https://github.com/jedisct1/dnscrypt-proxy/releases/download/${dnscrypt_version}/dnscrypt-proxy-linux_x86_64-${dnscrypt_version}.tar.gz.minisig && \
     cd /tmp && \
-    minisign -Vm dnscrypt.tar.gz -P $dnscrypt_pubkey && \
-    tar -xzf dnscrypt.tar.gz && \
+    minisign -Vm dnscrypt-proxy.tar.gz -P $dnscrypt_pubkey && \
+    tar -xzf dnscrypt-proxy.tar.gz && \
     mv /tmp/linux-x86_64/dnscrypt-proxy /usr/local/bin
 
 ARG confd_version=0.16.0
