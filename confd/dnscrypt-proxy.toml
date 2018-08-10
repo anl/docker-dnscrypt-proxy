@@ -2,5 +2,5 @@
 src = "dnscrypt-proxy.toml.tmpl"
 dest = "/etc/dnscrypt-proxy.toml"
 keys = [
-    "/dnscryptproxy/listenaddresses"
+    "/dnscryptproxy"
 ]
