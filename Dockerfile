@@ -5,10 +5,9 @@ RUN apt-get update && \
     apt-get install -y build-essential \
                        cmake \
                        curl \
+                       git \
                        libsodium-dev \
-                       libsodium23 && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists
+                       libsodium23
 
 ARG minisign_version=0.8
 ARG minisign_checksum=c8bf3765193a72193219141a726fb617e40c957b
@@ -54,7 +53,16 @@ RUN curl -Lso /tmp/containerpilot.tar.gz \
     echo "${CONTAINERPILOT_CHECKSUM}  /tmp/containerpilot.tar.gz" | sha1sum -c && \
     tar -xzf /tmp/containerpilot.tar.gz -C /usr/local/bin
 
+RUN git clone https://github.com/jedisct1/dnscrypt-proxy.git /tmp/dnscrypt-proxy && \
+    cd /tmp/dnscrypt-proxy && \
+    git checkout $dnscrypt_version
+
 # FROM ubuntu:1804
+
+RUN apt-get update && \
+    apt-get install -y python && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists
 
 COPY etc /etc
 
