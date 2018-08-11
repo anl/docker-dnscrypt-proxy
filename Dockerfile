@@ -59,5 +59,8 @@ RUN curl -Lso /tmp/containerpilot.tar.gz \
 COPY etc /etc
 
 ENV DNSCRYPTPROXY_LISTENADDRESSES="['0.0.0.0:53']"
+RUN mkdir /var/log/dnscrypt-proxy && \
+    chown nobody /var/log/dnscrypt-proxy
+VOLUME /var/log/dnscrypt-proxy
 
 CMD ["/usr/local/bin/containerpilot", "-config", "/etc/containerpilot.json5" ]

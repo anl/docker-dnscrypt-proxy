@@ -299,12 +299,12 @@ cache_neg_max_ttl = 600
 
   ## Path to the query log file (absolute, or relative to the same directory as the executable file)
 
-  # file = 'query.log'
+  file = '{{getv "/dnscryptproxy/querylog/file" "/var/log/dnscrypt-proxy/query.log"}}'
 
 
   ## Query log format (currently supported: tsv and ltsv)
 
-  format = 'tsv'
+  format = 'ltsv'
 
 
   ## Do not log these query types, to reduce verbosity. Keep empty to log everything.
