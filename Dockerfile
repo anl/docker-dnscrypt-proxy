@@ -19,7 +19,7 @@ RUN curl -Lso /tmp/minisign.tar.gz \
     cd minisign-${minisign_version} && \
     mkdir build && \
     cd build && \
-    cmake .. && \
+    cmake -DCMAKE_INSTALL_PREFIX=/opt/minisign .. && \
     make && \
     make install && \
     cd /
@@ -32,7 +32,7 @@ RUN curl -Lso /tmp/dnscrypt-proxy.tar.gz \
     curl -Lso /tmp/dnscrypt-proxy.tar.gz.minisig \
          https://github.com/jedisct1/dnscrypt-proxy/releases/download/${dnscrypt_version}/dnscrypt-proxy-linux_x86_64-${dnscrypt_version}.tar.gz.minisig && \
     cd /tmp && \
-    minisign -Vm dnscrypt-proxy.tar.gz -P $dnscrypt_pubkey && \
+    /opt/minisign/bin/minisign -Vm dnscrypt-proxy.tar.gz -P $dnscrypt_pubkey && \
     tar -xzf dnscrypt-proxy.tar.gz && \
     mv /tmp/linux-x86_64/dnscrypt-proxy /usr/local/bin
 
