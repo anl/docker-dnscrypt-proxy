@@ -1,5 +1,4 @@
-# FROM ubuntu:18.04 as builder
-FROM ubuntu:18.04
+FROM ubuntu:18.04 as builder
 
 RUN apt-get update && \
     apt-get install -y build-essential \
@@ -57,13 +56,15 @@ RUN git clone https://github.com/jedisct1/dnscrypt-proxy.git /tmp/dnscrypt-proxy
     cd /tmp/dnscrypt-proxy && \
     git checkout $dnscrypt_version
 
-# FROM ubuntu:1804
+FROM ubuntu:18.04
 
 RUN apt-get update && \
-    apt-get install -y python && \
+    apt-get install -y ca-certificates \
+                       python && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 
+COPY --from=builder /usr/local/bin /usr/local/bin
 COPY etc /etc
 
 ENV DNSCRYPTPROXY_LISTENADDRESSES="['0.0.0.0:53']"
