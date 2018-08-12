@@ -67,6 +67,10 @@ RUN apt-get update && \
 COPY --from=builder /usr/local/bin /usr/local/bin
 COPY etc /etc
 
+RUN mkdir -p /opt/generate-domains-blacklists/bin
+COPY --from=builder /tmp/dnscrypt-proxy/utils/generate-domains-blacklists/generate-domains-blacklist.py /opt/generate-domains-blacklists/bin
+COPY --from=builder /tmp/dnscrypt-proxy/LICENSE /opt/generate-domains-blacklists
+
 ENV DNSCRYPTPROXY_LISTENADDRESSES="['0.0.0.0:53']"
 RUN mkdir /var/log/dnscrypt-proxy && \
     chown nobody /var/log/dnscrypt-proxy
