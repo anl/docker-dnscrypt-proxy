@@ -2,8 +2,9 @@
   jobs: [
       { name: "confd",
         exec: "/usr/local/bin/confd -onetime -backend {{ .CONFD_BACKEND | default "env" }}" },
-      { name: "dnscrypt",
+      { name: "dnscrypt-proxy",
         exec: "/usr/local/bin/dnscrypt-proxy -config /etc/dnscrypt-proxy.toml",
+	restarts: "unlimited",
         when: {
             source: "confd",
             once: "exitSuccess"
