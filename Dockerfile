@@ -52,26 +52,26 @@ RUN curl -Lso /tmp/containerpilot.tar.gz \
     echo "${CONTAINERPILOT_CHECKSUM}  /tmp/containerpilot.tar.gz" | sha1sum -c && \
     tar -xzf /tmp/containerpilot.tar.gz -C /usr/local/bin
 
-RUN git clone https://github.com/jedisct1/dnscrypt-proxy.git /tmp/dnscrypt-proxy && \
-    cd /tmp/dnscrypt-proxy && \
-    git checkout $dnscrypt_version
-
 FROM ubuntu:18.04
 
 RUN apt-get update && \
-    apt-get install -y ca-certificates \
-                       python && \
+    apt-get install -y ca-certificates && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 
 COPY --from=builder /usr/local/bin /usr/local/bin
 COPY etc /etc
 
-RUN mkdir -p /opt/generate-domains-blacklists/bin
-COPY --from=builder /tmp/dnscrypt-proxy/utils/generate-domains-blacklists/generate-domains-blacklist.py /opt/generate-domains-blacklists/bin
-COPY --from=builder /tmp/dnscrypt-proxy/LICENSE /opt/generate-domains-blacklists
-
 ENV DNSCRYPTPROXY_LISTENADDRESSES="['0.0.0.0:53']"
+
+RUN mkdir /etc/dnscrypt-proxy && \
+    chown root:root /etc/dnscrypt-proxy && \
+    chmod 755 /etc/dnscrypt-proxy && \
+    touch /etc/dnscrypt-proxy/blacklist.txt \
+          /etc/dnscrypt-proxy/ip-blacklist.txt \
+          /etc/dnscrypt-proxy/whitelist.txt
+VOLUME /etc/dnscrypt-proxy
+
 RUN mkdir /var/log/dnscrypt-proxy && \
     chown nobody /var/log/dnscrypt-proxy
 VOLUME /var/log/dnscrypt-proxy

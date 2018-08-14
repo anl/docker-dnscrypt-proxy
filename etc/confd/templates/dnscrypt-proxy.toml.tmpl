@@ -355,17 +355,17 @@ cache_neg_max_ttl = 600
 
   ## Path to the file of blocking rules (absolute, or relative to the same directory as the executable file)
 
-  # blacklist_file = 'blacklist.txt'
+  blacklist_file = '/etc/dnscrypt-proxy/blacklist.txt'
 
 
   ## Optional path to a file logging blocked queries
 
-  # log_file = 'blocked.log'
+  log_file = '{{getv "/dnscryptproxy/blacklistlog/file" "/var/log/dnscrypt-proxy/blocked.log"}}'
 
 
   ## Optional log format: tsv or ltsv (default: tsv)
 
-  # log_format = 'tsv'
+  log_format = 'ltsv'
 
 
 
@@ -383,17 +383,17 @@ cache_neg_max_ttl = 600
 
   ## Path to the file of blocking rules (absolute, or relative to the same directory as the executable file)
 
-  # blacklist_file = 'ip-blacklist.txt'
+  blacklist_file = '/etc/dnscrypt-proxy/ip-blacklist.txt'
 
 
   ## Optional path to a file logging blocked queries
 
-  # log_file = 'ip-blocked.log'
+  log_file = '{{getv "/dnscryptproxy/ipblacklistlog/file" "/var/log/dnscrypt-proxy/ip-blocked.log"}}'
 
 
   ## Optional log format: tsv or ltsv (default: tsv)
 
-  # log_format = 'tsv'
+  log_format = 'ltsv'
 
 
 
@@ -411,17 +411,17 @@ cache_neg_max_ttl = 600
 
   ## Path to the file of whitelisting rules (absolute, or relative to the same directory as the executable file)
 
-  # whitelist_file = 'whitelist.txt'
+  whitelist_file = '/etc/dnscrypt-proxy/whitelist.txt'
 
 
   ## Optional path to a file logging whitelisted queries
 
-  # log_file = 'whitelisted.log'
+  log_file = '{{getv "/dnscryptproxy/whitelistlog/file" "/var/log/dnscrypt-proxy/whitelisted.log"}}'
 
 
   ## Optional log format: tsv or ltsv (default: tsv)
 
-  # log_format = 'tsv'
+  log_format = 'ltsv'
 
 
 
