@@ -1,4 +1,4 @@
-{ consul: "localhost:8500",
+{ consul: "{{ .CONSUL | default "localhost:8500" }}",
   jobs: [
       { name: "confd",
         exec: "/usr/local/bin/confd -onetime -backend {{ .CONFD_BACKEND | default "env" }}" },
