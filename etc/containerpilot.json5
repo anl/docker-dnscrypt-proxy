@@ -1,7 +1,7 @@
 { consul: "{{ .CONSUL | default "localhost:8500" }}",
   jobs: [
       { name: "confd",
-        exec: "/usr/local/bin/confd -onetime -backend {{ .CONFD_BACKEND | default "env" }}" },
+        exec: "/usr/local/bin/confd -onetime -backend {{ .CONFD_BACKEND | default "env" }}{{ if .CONFD_NODE }} -node {{ .CONFD_NODE }}{{ end }}" },
       { name: "dnscrypt-proxy",
         exec: "/usr/local/bin/dnscrypt-proxy -config /etc/dnscrypt-proxy.toml",
 	{{ if .CONSUL }}
