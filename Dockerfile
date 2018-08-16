@@ -55,7 +55,8 @@ RUN curl -Lso /tmp/containerpilot.tar.gz \
 FROM ubuntu:18.04
 
 RUN apt-get update && \
-    apt-get install -y ca-certificates && \
+    apt-get install -y ca-certificates \
+                       dnsutils && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 

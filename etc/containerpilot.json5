@@ -4,6 +4,15 @@
         exec: "/usr/local/bin/confd -onetime -backend {{ .CONFD_BACKEND | default "env" }}" },
       { name: "dnscrypt-proxy",
         exec: "/usr/local/bin/dnscrypt-proxy -config /etc/dnscrypt-proxy.toml",
+	{{ if .CONSUL }}
+	health: {
+	    exec: "/usr/bin/dig @localhost google-public-dns-a.google.com +short",
+	    interval: 10,
+	    ttl: 20,
+	    timeout: "10s"
+	},
+	port: 53,
+	{{ end }}
 	restarts: "unlimited",
         when: {
             source: "confd",
