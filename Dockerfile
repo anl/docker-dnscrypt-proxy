@@ -63,8 +63,6 @@ RUN apt-get update && \
 COPY --from=builder /usr/local/bin /usr/local/bin
 COPY etc /etc
 
-ENV DNSCRYPTPROXY_LISTENADDRESSES="['0.0.0.0:53']"
-
 RUN mkdir /etc/dnscrypt-proxy && \
     chown root:root /etc/dnscrypt-proxy && \
     chmod 755 /etc/dnscrypt-proxy && \
