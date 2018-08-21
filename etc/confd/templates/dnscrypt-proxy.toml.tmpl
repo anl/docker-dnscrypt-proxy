@@ -360,7 +360,7 @@ cache_neg_max_ttl = 600
 
   ## Optional path to a file logging blocked queries
 
-  log_file = '{{getv "/dnscryptproxy/blacklistlog/file" "/var/log/dnscrypt-proxy/blocked.log"}}'
+  log_file = '{{getv "/dnscryptproxy/blacklistlog/logfile" "/var/log/dnscrypt-proxy/blocked.log"}}'
 
 
   ## Optional log format: tsv or ltsv (default: tsv)
@@ -388,7 +388,7 @@ cache_neg_max_ttl = 600
 
   ## Optional path to a file logging blocked queries
 
-  log_file = '{{getv "/dnscryptproxy/ipblacklistlog/file" "/var/log/dnscrypt-proxy/ip-blocked.log"}}'
+  log_file = '{{getv "/dnscryptproxy/ipblacklistlog/logfile" "/var/log/dnscrypt-proxy/ip-blocked.log"}}'
 
 
   ## Optional log format: tsv or ltsv (default: tsv)
@@ -416,7 +416,7 @@ cache_neg_max_ttl = 600
 
   ## Optional path to a file logging whitelisted queries
 
-  log_file = '{{getv "/dnscryptproxy/whitelistlog/file" "/var/log/dnscrypt-proxy/whitelisted.log"}}'
+  log_file = '{{getv "/dnscryptproxy/whitelistlog/logfile" "/var/log/dnscrypt-proxy/whitelisted.log"}}'
 
 
   ## Optional log format: tsv or ltsv (default: tsv)

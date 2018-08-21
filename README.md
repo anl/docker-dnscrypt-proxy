@@ -29,15 +29,15 @@ Similarly, other Confd backends can be used if desired by passing the arguments 
 
 Confd looks up the following keys to set values in dnscrypt-proxy's configuration file:
 
-* `/dnscryptproxy/blacklistlog/file` - Sets `blacklist:log_file`, path to a file logging blocked queries; default: `/var/log/dnscrypt-proxy/blocked.log`.
-* `/dnscryptproxy/ipblacklistlog/file` - Sets `ip_blacklist:log_file`, path to a file logging queries blocked based on IP addresses in the response; default: `/var/log/dnscrypt-proxy/ip-blocked.log`.
+* `/dnscryptproxy/blacklistlog/logfile` - Sets `blacklist:log_file`, path to a file logging blocked queries; default: `/var/log/dnscrypt-proxy/blocked.log`.
+* `/dnscryptproxy/ipblacklistlog/logfile` - Sets `ip_blacklist:log_file`, path to a file logging queries blocked based on IP addresses in the response; default: `/var/log/dnscrypt-proxy/ip-blocked.log`.
 * `/dnscryptproxy/listenaddresses` - Sets `listen_addresses`, the list of local addresses and ports to listen to.  Note that this is passed as a string containing a TOML array, and not as multiple keys under a prefix.  Default: `['0.0.0.0:53']`.
 * `/dnscryptproxy/nxlog/file` - Sets `nx_log:file`, path to the log file for queries of nonexistent zones; default: `/var/log/dnscrypt-proxy/nx.log`.
 * `/dnscryptproxy/querylog/file` - Sets `query_log:file`, path to the query log file; default: `/var/log/dnscrypt-proxy/query.log`.
 * `/dnscryptproxy/servername/*` - Multiple keys containing servers from the "public-resolvers" source, used together to set the `server_names` array.  None are defined by default, so that all servers matching `require_*` filters are used.
-* `/dnscryptproxy/whitelistlog/file` - Sets `whitelist:log_file`, the file for logging whitelisted queries; default: `/var/log/dnscrypt-proxy/whitelisted.log`.
+* `/dnscryptproxy/whitelistlog/logfile` - Sets `whitelist:log_file`, the file for logging whitelisted queries; default: `/var/log/dnscrypt-proxy/whitelisted.log`.
 
-Note that if the default `env` backend to Confd is being used, the above keys are capitalized and `/` is replaced with `_`, with the leading `_` omitted when reading environment variables.  For example, `/dnscryptproxy/blacklistlog/file` would be read from the environment variable `DNSCRYPTPROXY_BLACKLISTLOG_FILE`.  Similarly, `DNSCRYPTPROXY_SERVERNAME_A` and `DNSCRYPTPROXY_SERVERNAME_B` would each be keys read under `/dnscryptproxy/servername/*`.
+Note that if the default `env` backend to Confd is being used, the above keys are capitalized and `/` is replaced with `_`, with the leading `_` omitted when reading environment variables.  For example, `/dnscryptproxy/blacklistlog/logfile` would be read from the environment variable `DNSCRYPTPROXY_BLACKLISTLOG_LOGFILE`.  Similarly, `DNSCRYPTPROXY_SERVERNAME_A` and `DNSCRYPTPROXY_SERVERNAME_B` would each be keys read under `/dnscryptproxy/servername/*`.
 
 ## Logging
 
