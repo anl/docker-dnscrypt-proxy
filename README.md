@@ -16,7 +16,7 @@ By default, this image does not attempt to register the dnscrypt-proxy instance 
 
 ```
 docker run --rm \
-    -p 53/udp -p 53:53/tcp \
+    -p 53:53/udp -p 53:53/tcp \
     -e CONSUL=consul.example.com:8500 \
     -e CONFD_BACKEND=consul
     -e CONFD_NODE=consul.example.com:8500 \
