@@ -24,7 +24,7 @@ RUN curl -Lso /tmp/minisign.tar.gz \
     make install && \
     cd /
 
-ARG dnscrypt_version=2.0.16
+ARG dnscrypt_version=2.0.25
 ARG dnscrypt_pubkey=RWTk1xXqcTODeYttYMCMLo0YJHaFEHn7a3akqHlb/7QvIQXHVPxKbjB5
 
 RUN curl -Lso /tmp/dnscrypt-proxy.tar.gz \
